@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+            def matrix_chain_order(p):
+            n = len(p) - 1  # Number of matrices
+            m = [[0] * n for _ in range(n)]  # Table to store minimum number of scalar multiplications
+            s = [[0] * n for _ in range(n)]  # Table to store the split points
+        
+            # Fill the tables using bottom-up approach
+            for length in range(2, n + 1):
+                for i in range(n - length + 1):
+                    j = i + length - 1
+                    m[i][j] = float('inf')
+                    for k in range(i, j):
+                        cost = m[i][k] + m[k + 1][j] + p[i] * p[k + 1] * p[j + 1]
+                        if cost < m[i][j]:
+                            m[i][j] = cost
+                            s[i][j] = k
+        
+            return m, s
+        
+        def print_optimal_parentheses(s, i, j):
+            if i == j:
+                print("A" + str(i), end="")
+            else:
+                print("(", end="")
+                print_optimal_parentheses(s, i, s[i][j])
+                print_optimal_parentheses(s, s[i][j] + 1, j)
+                print(")", end="")
+        
+        # Example usage:
+        dimensions = [30, 35, 15, 5, 10, 20, 25]  # Dimensions of matrices
+        m, s = matrix_chain_order(dimensions)
+        print("Minimum number of scalar multiplications:", m[0][-1])
+        print("Optimal order of matrix multiplication:", end=" ")
+        print_optimal_parentheses(s, 0, len(dimensions) - 2)
+                
+        </code>
+    </pre>
+</body>
+</html>

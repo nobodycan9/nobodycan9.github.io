@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>
+            class Node:
+            def __init__(self, data):
+                self.data = data  # Data stored in the node
+                self.next = None  # Reference to the next node, initially set to None
+        
+        
+        # Example usage:
+        # Create nodes
+        node1 = Node(5)
+        node2 = Node(10)
+        node3 = Node(15)
+        
+        # Link nodes together
+        node1.next = node2
+        node2.next = node3
+        
+        # Traverse the linked list and print data
+        current_node = node1  # Start from the head node
+        while current_node is not None:
+            print(current_node.data)
+            current_node = current_node.next
+            
+        </code>
+    </pre>
+</body>
+</html>

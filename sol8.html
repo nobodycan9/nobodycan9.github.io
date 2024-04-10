@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>
+
+            class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end_of_word = True
+
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end_of_word
+
+
+# Example usage:
+trie = Trie()
+words = ["hello", "world", "python", "programming"]
+
+# Insert words into trie
+for word in words:
+    trie.insert(word)
+
+# Search for words in trie
+search_words = ["hello", "python", "java", "program"]
+for word in search_words:
+    if trie.search(word):
+        print(f"'{word}' found in trie")
+    else:
+        print(f"'{word}' not found in trie")
+
+        </code>
+    </pre>
+</body>
+</html>

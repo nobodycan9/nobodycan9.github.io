@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+            def tower_of_hanoi(n, source, destination, auxiliary):
+            if n == 1:
+                print(f"Move disk 1 from {source} to {destination}")
+                return
+            tower_of_hanoi(n - 1, source, auxiliary, destination)
+            print(f"Move disk {n} from {source} to {destination}")
+            tower_of_hanoi(n - 1, auxiliary, destination, source)
+        
+        # Example usage:
+        num_disks = 3
+        tower_of_hanoi(num_disks, 'A', 'C', 'B')
+                
+        </code>
+    </pre>
+</body>
+</html>

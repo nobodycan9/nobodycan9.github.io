@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+            import heapq
+
+            class Solution:
+                def spanningTree(self, V, adj):
+                    pq = []  # Priority queue to store (wt, node) pairs
+                    vis = [0] * V  # Visited array to keep track of visited nodes
+                    pq.append((0, 0))  # Start with node 0 and weight 0
+                    sum = 0  # Initialize sum of edge weights
+            
+                    while pq:
+                        wt, node = heapq.heappop(pq)
+                        
+                        if vis[node] == 1:
+                            continue  # Skip if node is already visited
+            
+                        vis[node] = 1  # Mark node as visited
+                        sum += wt  # Add edge weight to sum
+            
+                        for adjNode, edW in adj[node]:
+                            if not vis[adjNode]:
+                                heapq.heappush(pq, (edW, adjNode))  # Push adjacent node and edge weight to priority queue
+            
+                    return sum
+            
+            if __name__ == "__main__":
+                V = 5
+                edges = [[0, 1, 2], [0, 2, 1], [1, 2, 1], [2, 3, 2], [3, 4, 1], [4, 2, 2]]
+                adj = [[] for _ in range(V)]
+                
+                for edge in edges:
+                    adj[edge[0]].append((edge[1], edge[2]))  # Add adjacent node and edge weight
+                    adj[edge[1]].append((edge[0], edge[2]))  # Add reverse edge
+                
+                obj = Solution()
+                sum = obj.spanningTree(V, adj)
+                print("The sum of all the edge weights:", sum)
+                    
+        </code>
+    </pre>
+</body>
+</html>

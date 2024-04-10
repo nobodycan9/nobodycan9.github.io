@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>
+            Using List Comprehension:
+
+python
+Copy code
+def intersection(list1, list2):
+    return [value for value in list1 if value in list2]
+
+# Example usage:
+list1 = [1, 2, 3, 4, 5]
+list2 = [4, 5, 6, 7, 8]
+print("Intersection of lists:", intersection(list1, list2))
+Using Sets:
+
+python
+Copy code
+def intersection(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    return list(set1.intersection(set2))
+
+# Example usage:
+list1 = [1, 2, 3, 4, 5]
+list2 = [4, 5, 6, 7, 8]
+print("Intersection of lists:", intersection(list1, list2))        
+
+
+        </code>
+    </pre>
+</body>
+</html>

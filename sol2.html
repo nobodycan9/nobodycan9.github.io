@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>
+            class Graph:
+            def __init__(self, vertices):
+                self.vertices = vertices
+                self.adj_list = {vertex: [] for vertex in range(vertices)}
+        
+            def add_edge(self, u, v):
+                self.adj_list[u].append(v)
+                self.adj_list[v].append(u)
+        
+            def dfs(self, start, target, visited=None):
+                if visited is None:
+                    visited = set()
+                visited.add(start)
+                if start == target:
+                    return True
+                for neighbor in self.adj_list[start]:
+                    if neighbor not in visited:
+                        if self.dfs(neighbor, target, visited):
+                            return True
+                return False
+        
+        
+        # Example usage:
+        g = Graph(5)
+        g.add_edge(0, 1)
+        g.add_edge(0, 2)
+        g.add_edge(1, 3)
+        g.add_edge(2, 4)
+        
+        start_node = 0
+        target_node = 4
+        
+        if g.dfs(start_node, target_node):
+            print(f"{target_node} is reachable from {start_node} using DFS.")
+        else:
+            print(f"{target_node} is not reachable from {start_node} using DFS.")
+            
+        </code>
+    </pre>
+</body>
+</html>

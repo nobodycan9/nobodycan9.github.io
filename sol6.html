@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+
+            class Stack:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if self.is_empty():
+            print("Stack is empty")
+            return None
+        return self.items.pop()
+
+    def peek(self):
+        if self.is_empty():
+            print("Stack is empty")
+            return None
+        return self.items[-1]
+
+    def display(self):
+        if self.is_empty():
+            print("Stack is empty")
+            return
+        print("Stack elements:", end=" ")
+        for item in reversed(self.items):
+            print(item, end=" ")
+        print()
+
+
+# Example usage:
+s = Stack()
+s.push(1)
+s.push(2)
+s.push(3)
+
+print("Initial Stack:")
+s.display()
+
+print("Peek:", s.peek())
+
+print("Pop:", s.pop())
+print("Stack elements after pop:")
+s.display()
+
+print("Pop:", s.pop())
+print("Stack elements after pop:")
+s.display()
+
+print("Peek:", s.peek())
+
+print("Pop:", s.pop())
+print("Stack elements after pop:")
+s.display()
+
+print("Peek:", s.peek())
+
+        </code>
+    </pre>
+</body>
+</html>

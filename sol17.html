@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+            class TreeNode:
+            def __init__(self, key):
+                self.key = key
+                self.left = None
+                self.right = None
+        
+        def insert(root, key):
+            if root is None:
+                return TreeNode(key)
+            if key < root.key:
+                root.left = insert(root.left, key)
+            elif key > root.key:
+                root.right = insert(root.right, key)
+            return root
+        
+        def search(root, key):
+            if root is None or root.key == key:
+                return root
+            if key < root.key:
+                return search(root.left, key)
+            return search(root.right, key)
+        
+        def minValueNode(node):
+            current = node
+            while current.left is not None:
+                current = current.left
+            return current
+        
+        def deleteNode(root, key):
+            if root is None:
+                return root
+            if key < root.key:
+                root.left = deleteNode(root.left, key)
+            elif key > root.key:
+                root.right = deleteNode(root.right, key)
+            else:
+                if root.left is None:
+                    temp = root.right
+                    root = None
+                    return temp
+                elif root.right is None:
+                    temp = root.left
+                    root = None
+                    return temp
+                temp = minValueNode(root.right)
+                root.key = temp.key
+                root.right = deleteNode(root.right, temp.key)
+            return root
+        
+        def inorder(root):
+            if root:
+                inorder(root.left)
+                print(root.key, end=" ")
+                inorder(root.right)
+        
+        # Example usage:
+        root = None
+        keys = [50, 30, 20, 40, 70, 60, 80]
+        
+        # Insert keys into the BST
+        for key in keys:
+            root = insert(root, key)
+        
+        print("Inorder traversal of the BST:")
+        inorder(root)
+        print()
+        
+        # Search for a node
+        search_key = 40
+        result = search(root, search_key)
+        if result:
+            print(f"Node with key {search_key} found in the BST.")
+        else:
+            print(f"Node with key {search_key} not found in the BST.")
+        
+        # Delete a node
+        delete_key = 30
+        root = deleteNode(root, delete_key)
+        print(f"BST after deleting node with key {delete_key}:")
+        inorder(root)
+                 
+        </code>
+    </pre>
+</body>
+</html>

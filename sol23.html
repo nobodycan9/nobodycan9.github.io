@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+            def kruskal(graph):
+            num_vertices = len(graph)
+            mst = []
+            edges = []
+        
+            # Convert the graph into a list of edges
+            for i in range(num_vertices):
+                for j in range(i + 1, num_vertices):
+                    if graph[i][j] != 0:  # Assuming 0 indicates absence of edge
+                        edges.append((i, j, graph[i][j]))
+        
+            # Sort the edges by weight
+            edges.sort(key=lambda x: x[2])
+        
+            # A list to keep track of the parent of each vertex
+            parent = [i for i in range(num_vertices)]
+        
+            def find(u):
+                while u != parent[u]:
+                    u = parent[u]
+                return u
+        
+            # Iterate through the sorted edges
+            for edge in edges:
+                u, v, weight = edge
+                u_root = find(u)
+                v_root = find(v)
+        
+                if u_root != v_root:
+                    mst.append(edge)
+        
+                    # Update parent of one vertex to point to the other
+                    parent[u_root] = v_root
+        
+            return mst
+        
+        # Example usage:
+        graph = [
+            [0, 2, 0, 6, 0],
+            [2, 0, 3, 8, 5],
+            [0, 3, 0, 0, 7],
+            [6, 8, 0, 0, 9],
+            [0, 5, 7, 9, 0]
+        ]
+        
+        mst = kruskal(graph)
+        print("Minimum Spanning Tree:")
+        for edge in mst:
+            print(edge)
+                
+        </code>
+    </pre>
+</body>
+</html>

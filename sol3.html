@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>class Queue:
+            def __init__(self):
+                self.items = []
+        
+            def is_empty(self):
+                return len(self.items) == 0
+        
+            def enqueue(self, item):
+                self.items.append(item)
+        
+            def dequeue(self):
+                if self.is_empty():
+                    print("Queue is empty")
+                    return None
+                return self.items.pop(0)
+        
+            def peek(self):
+                if self.is_empty():
+                    print("Queue is empty")
+                    return None
+                return self.items[0]
+        
+            def display(self):
+                if self.is_empty():
+                    print("Queue is empty")
+                    return
+                print("Queue elements:", end=" ")
+                for item in self.items:
+                    print(item, end=" ")
+                print()
+        
+        
+        # Example usage:
+        q = Queue()
+        q.enqueue(1)
+        q.enqueue(2)
+        q.enqueue(3)
+        
+        print("Initial Queue:")
+        q.display()
+        
+        print("Peek:", q.peek())
+        
+        print("Dequeue:", q.dequeue())
+        print("Queue elements after dequeue:")
+        q.display()
+        
+        print("Dequeue:", q.dequeue())
+        print("Queue elements after dequeue:")
+        q.display()
+        
+        print("Peek:", q.peek())
+        
+        print("Dequeue:", q.dequeue())
+        print("Queue elements after dequeue:")
+        q.display()
+        
+        print("Peek:", q.peek())
+        
+        </code>
+    </pre>
+</body>
+</html>

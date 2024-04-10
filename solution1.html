@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+    def is_empty(self):
+        return self.front is None
+
+    def enqueue(self, data):
+        new_node = Node(data)
+        if self.is_empty():
+            self.front = new_node
+            self.rear = new_node
+        else:
+            self.rear.next = new_node
+            self.rear = new_node
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty")
+            return None
+        else:
+            data = self.front.data
+            self.front = self.front.next
+            if self.front is None:
+                self.rear = None
+            return data
+
+    def peek(self):
+        if self.is_empty():
+            print("Queue is empty")
+            return None
+        else:
+            return self.front.data
+
+    def display(self):
+        if self.is_empty():
+            print("Queue is empty")
+        else:
+            current = self.front
+            while current is not None:
+                print(current.data, end=" ")
+                current = current.next
+            print()
+
+
+# Example usage:
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+
+print("Queue elements:")
+q.display()
+
+print("Peek:", q.peek())
+
+print("Dequeue:", q.dequeue())
+print("Queue elements after dequeue:")
+q.display()
+
+print("Dequeue:", q.dequeue())
+print("Queue elements after dequeue:")
+q.display()
+
+print("Peek:", q.peek())
+
+print("Dequeue:", q.dequeue())
+print("Queue elements after dequeue:")
+q.display()
+
+print("Peek:", q.peek())
+
+        </code>
+    </pre>
+</body>
+</html>

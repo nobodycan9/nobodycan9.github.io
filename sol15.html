@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+            def fibonacci(n, memo={}):
+            if n in memo:
+                return memo[n]
+            if n <= 1:
+                return n
+            memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
+            return memo[n]
+        
+        # Example usage:
+        n = 10
+        print(f"The {n}-th Fibonacci number is:", fibonacci(n))
+                 
+        
+        </code>
+    </pre>
+</body>
+</html>

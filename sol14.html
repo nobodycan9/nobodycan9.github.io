@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+                 
+            def is_valid_move(maze, x, y):
+            # Check if the move is within the bounds of the maze and the cell is not blocked (0)
+            return 0 <= x < len(maze) and 0 <= y < len(maze[0]) and maze[x][y] != 0
+        
+        def solve_maze_util(maze, x, y, path):
+            # Base case: Reached the end of the maze
+            if x == len(maze) - 1 and y == len(maze[0]) - 1:
+                path.append((x, y))
+                return True
+        
+            # Check if the current cell is a valid move
+            if is_valid_move(maze, x, y):
+                # Mark the cell as visited
+                path.append((x, y))
+        
+                # Move down
+                if solve_maze_util(maze, x + 1, y, path):
+                    return True
+                # Move right
+                if solve_maze_util(maze, x, y + 1, path):
+                    return True
+        
+                # If neither down nor right leads to the end, backtrack
+                path.pop()
+                return False
+        
+            # If the current cell is not a valid move, backtrack
+            return False
+        
+        def solve_maze(maze):
+            # Start from the top-left corner (0, 0)
+            path = []
+            if solve_maze_util(maze, 0, 0, path):
+                return path
+            else:
+                return None
+        
+        # Example usage:
+        maze = [
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 0, 1],
+            [0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 1]
+        ]
+        
+        solution = solve_maze(maze)
+        if solution:
+            print("Path found:")
+            for x, y in solution:
+                print(f"({x}, {y}) -> ", end="")
+            print("End")
+        else:
+            print("No path found from the start to the end in the maze.")
+        
+        </code>
+    </pre>
+</body>
+</html>

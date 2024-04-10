@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code with Indentation</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <pre>
+        <code>        
+            def fractional_knapsack(items, capacity):
+            # Sort items based on their value-to-weight ratio (value / weight)
+            items.sort(key=lambda x: x[0] / x[1], reverse=True)
+        
+            total_value = 0
+            knapsack = []
+        
+            for value, weight in items:
+                if capacity >= weight:
+                    # If the entire item can be added to the knapsack
+                    knapsack.append((value, weight))
+                    total_value += value
+                    capacity -= weight
+                else:
+                    # If only a fraction of the item can be added to the knapsack
+                    fraction = capacity / weight
+                    knapsack.append((value * fraction, weight * fraction))
+                    total_value += value * fraction
+                    break  # Knapsack is full
+        
+            return total_value, knapsack
+        
+        
+        # Example usage:
+        items = [(60, 10), (100, 20), (120, 30)]  # (value, weight) pairs
+        capacity = 50
+        total_value, knapsack = fractional_knapsack(items, capacity)
+        print("Total value of items in the knapsack:", total_value)
+        print("Items selected for the knapsack:")
+        for value, weight in knapsack:
+            print("Value:", value, "Weight:", weight)
+                
+        </code>
+    </pre>
+</body>
+</html>
